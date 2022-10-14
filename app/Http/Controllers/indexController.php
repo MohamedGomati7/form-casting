@@ -25,4 +25,9 @@ class indexController extends Controller
       $applicant->save();
       return redirect('/')->with('success','Thank you!');
     }
+
+    Public function form(){
+
+      return view('tables');
+  }
 }
