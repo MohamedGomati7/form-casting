@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Applications;
 
 class indexController extends Controller
 {
@@ -12,7 +13,8 @@ class indexController extends Controller
     }
 
     public function apply(){
-        
+
+      $applicant = new Applications;
       $applicant->name = request('name');
       $applicant->phoneNumber = request('phoneNumber');
       $applicant->dob = request('dob');
@@ -25,9 +27,9 @@ class indexController extends Controller
       $applicant->save();
       return redirect('/')->with('success','Thank you!');
     }
-
     Public function form(){
+        $application = Applications::all();
+        return view('tables',compact('application'));
+    }
 
-      return view('tables');
-  }
 }

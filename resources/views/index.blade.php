@@ -12,7 +12,7 @@
     <!-- Title Page-->
     <title>Casting Form </title>
 
-    <link rel="shortcut icon" href="{{asset('logotitle1.png')}}" />	
+    <link rel="shortcut icon" href="{{asset('logotitle1.png')}}" />
 
 
     <!-- Icons font CSS-->
@@ -20,7 +20,6 @@
     <link href="{{asset('vendor2/font-awesome-4.7/css/font-awesome.min.css')}}" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="{{asset('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i')}}" rel="stylesheet">
-
     <!-- Vendor CSS-->
     <link href="{{asset('vendor2/select2/select2.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('vendor2/datepicker/daterangepicker.css')}}" rel="stylesheet" media="all">
@@ -28,19 +27,41 @@
     <!-- Main CSS-->
     <link href="{{asset('css/main.css')}}" rel="stylesheet" media="all">
 
-     
+
 	<style>
-    
+
         @font-face {
           font-family: myFirstFont;
           src: url(Tajawal-Regular.ttf);
        }
-       
+
        div , p , h1 , h2 , h3 , h4 , h5 , h6 , b ,a {
           font-family: myFirstFont;
        }
        </style>
+       <style>
+.alert {
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #32a852;
+  color: white;
+}
 
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+</style>
 </head>
 
 <body>
@@ -49,21 +70,22 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Registration Form</h2>
-
                     @if (count($errors) > 0)
-                  <div class = "alert alert-danger">
-                    <ul>
-                      @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                      @endforeach
-                    </ul>
-                  </div>
-                  @endif
-                  @if(session()->has('success'))
-                  <div class="alert alert-success">
-                    {{ session()->get('success') }}
-                  </div>
-                  @endif
+                    <div class = "alert alert-danger">
+                      <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
+                    @endif
+                    @if(session()->has('success'))
+                    <div class="alert">
+                      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                      <strong>شكرا لك</strong> {{ session()->get('success') }}
+                    </div>
+                    @endif
+
 
                     <form action="{{route('apply')}}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -165,7 +187,7 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label"><b> Picture - صورة شخصية * </b></label>
-                                    <input class="input--style-4" type="file" name="photo" required>
+                                    <input class="input--style-4" type="file" name="file" required>
                                 </div>
                             </div>
                             <!-- <div class="col-2">
@@ -204,16 +226,17 @@
 
                         </div>
 
-<!--                          
+<!--
                               <div class="input-group">
                                 <label class="label"><b> Scenery -  مشهد تمثيلي   </b></label>
                                 <input class="input--style-4" type="file" name="photo">
                             </div> -->
-                        
+
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--blue" type="submit"><b> Send - إرسال </b></button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

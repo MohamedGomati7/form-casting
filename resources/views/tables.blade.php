@@ -16,6 +16,9 @@
   <link href="{{asset('../assetss/css/nucleo-svg.css" rel="stylesheet')}}" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.0/jquery.fancybox.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.0/jquery.fancybox.min.js"></script>
+
   <link href="{{asset('../assetss/css/nucleo-svg.css')}}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{asset('../assetss/css/soft-ui-dashboard.css?v=1.0.6')}}" rel="stylesheet" />
@@ -358,40 +361,48 @@
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gender </th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">City  </th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Acting </th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Picture </th>
                       <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Category  </th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Picture </th>
 
 
                       <!-- <th class="text-secondary opacity-7"></th> -->
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- <tr>
+                    @foreach($application as $app)
+                    <tr>
                       <td>
                         <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
-                          </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">John Michael</h6>
-                            <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                            <h6 class="mb-0 text-sm mr-5">{{$app->name}}</h6>
                           </div>
                         </div>
                       </td>
                       <td>
-                        <p class="text-xs font-weight-bold mb-0">Manager</p>
-                        <p class="text-xs text-secondary mb-0">Organization</p>
+                        <p class=" font-weight-bold mb-0">{{$app->phoneNumber}}</p>
                       </td>
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success">Online</span>
+                        <span class="text-secondary font-weight-bold">{{$app->dob}}</span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                        <p class=" font-weight-bold mb-0">{{$app->gender}}</p>
                       </td>
-                       
-                    </tr> -->
-
-                    
+                      <td class="align-middle text-center">
+                        <p class=" font-weight-bold mb-0">{{$app->city}}</p>
+                      </td>
+                      <td class="align-middle text-center">
+                        <p class=" font-weight-bold mb-0">{{$app->act}}</p>
+                      </td>
+                      <td class="align-middle text-center">
+                        <p class=" font-weight-bold mb-0">{{$app->desire}}</p>
+                      </td>
+                      <td class="align-middle text-center">
+                        <a href="{{asset(Storage::url($app->file))}}" data-fancybox="gallery" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                          view
+                        </a>
+                      </td>
+                    </tr>
+                    @endforeach
                   </tbody>
                 </table>
               </div>
@@ -407,9 +418,9 @@
                 © <script>
                   document.write(new Date().getFullYear())
                 </script>,
-                made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
+                made with <i class="fa fa-heart"></i>
+                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank"></a>
+
               </div>
             </div>
             <div class="col-lg-6">
