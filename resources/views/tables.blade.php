@@ -25,6 +25,7 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
+  
   <!-- <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 " id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
@@ -347,9 +348,18 @@
       <div class="row">
         <div class="col-12">
           <div class="card mb-4">
-            <div class="card-header pb-0">
-              <h6><b>Registration data</b></h6>
+            <div class="card-header pb-0 ">
+              <form method="POST" action="{{ route('logout') }}" class="text-end " style="margin-right:20px">
+                            @csrf
+                            <a href="route('logout')" class="btn btn-info"
+                                    onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                                {{ __('Log Out') }}
+                              </a>
+                        </form>
+              <h6 class=""><b>Registration data</b></h6>
             </div>
+            
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
